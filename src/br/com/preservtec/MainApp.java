@@ -2,6 +2,7 @@ package br.com.preservtec;
 
 import java.io.IOException;
 
+import br.com.preservtec.util.Strings;
 import br.com.preservtec.view.ProcuracaoOverviewController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -26,8 +27,8 @@ public class MainApp extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
-		this.primaryStage.setTitle("Bookodex - Procuração");
-		this.primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("logo.png")));
+		this.primaryStage.setTitle(Strings.TIUTLO_MAIN);
+		this.primaryStage.getIcons().add(new Image(Strings.PATH_LOGO));
 		this.primaryStage.setMaximized(true);
 		
 		initRootLayout();
