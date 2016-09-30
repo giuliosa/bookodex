@@ -39,7 +39,7 @@ public class LoginApp extends Application {
 		try {
 			//Carrega o FXML
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(LoginApp.class.getResource("view/LoginOverview.fxml"));
+			loader.setLocation(LoginApp.class.getResource(Strings.LOGIN_FXML));
 			anchorPane = (AnchorPane) loader.load();
 			
 			LoginOverviewController controller = loader.getController();
@@ -57,7 +57,7 @@ public class LoginApp extends Application {
 	public void showProcuracaoDialog(Login login){
 		try{
 			FXMLLoader loaderRoot = new FXMLLoader();
-			loaderRoot.setLocation(MainApp.class.getResource("view/RootLayout.fxml"));
+			loaderRoot.setLocation(MainApp.class.getResource(Strings.ROOT_FXML));
 			BorderPane rootLayout = (BorderPane) loaderRoot.load();
 
 			Stage stageProcuracao = new Stage();
@@ -72,13 +72,14 @@ public class LoginApp extends Application {
 			stageProcuracao.show();
 			
 			FXMLLoader loaderProcuracao = new FXMLLoader();
-			loaderProcuracao.setLocation(MainApp.class.getResource("view/ProcuracaoOverview.fxml"));
+			loaderProcuracao.setLocation(MainApp.class.getResource(Strings.PROCURACAO_FXML));
 			ScrollPane personOverview = (ScrollPane) loaderProcuracao.load();
 
 			// Define o person overview dentro do root layout.
 			rootLayout.setCenter(personOverview);
 
 			ProcuracaoOverviewController controller = loaderProcuracao.getController();
+			controller.setStage(stageProcuracao);
 						
 			controller.setLogin(login);
 		}catch (Exception e) {

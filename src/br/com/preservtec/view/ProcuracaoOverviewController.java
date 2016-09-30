@@ -32,6 +32,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 /**
  * O controlador para o procuracaoOverview. Provê o layout principal para o
@@ -61,7 +62,7 @@ public class ProcuracaoOverviewController {
 	@FXML
 	private ScrollPane scrollImage;
 
-	private MainApp mainApp;
+	private Stage stage;
 	private Procuracao procuracao;
 	private DoubleProperty zoom;
 	private Image image;
@@ -92,8 +93,8 @@ public class ProcuracaoOverviewController {
 	 * 
 	 * @param mainApp
 	 */
-	public void setMainApp(MainApp mainApp) {
-		this.mainApp = mainApp;
+	public void setStage(Stage stage) {
+		this.stage = stage;
 	}
 
 	/**
@@ -166,7 +167,7 @@ public class ProcuracaoOverviewController {
 	 * Quando o usuário Clica em enviar
 	 */
 	@FXML
-	private void handleEnviar(){
+	private void handleEnviar() {
 		list = new ArrayList<Procuracao>();
 		if (isInputValid()) {
 
@@ -181,8 +182,8 @@ public class ProcuracaoOverviewController {
 
 			pdf = new PDFCreator();
 			pdf.criaDocumento(procuracao);
-			
-			//list.add(procuracao);
+
+			// list.add(procuracao);
 
 			Alert alert = new Alert(AlertType.CONFIRMATION);
 			alert.setTitle("Procuração Cadastrada");
@@ -200,11 +201,12 @@ public class ProcuracaoOverviewController {
 			} else {
 				alert.close();
 			}
-			/*pdf = new PDFCreator();
-			pdf.criaDocumento(list);*/
+			/*
+			 * pdf = new PDFCreator(); pdf.criaDocumento(list);
+			 */
 		}
 	}
-	
+
 	/**
 	 * Valida a entrada do usuário nos campos de texto
 	 * 
@@ -246,8 +248,8 @@ public class ProcuracaoOverviewController {
 			return false;
 		}
 	}
-	
-	public void setLogin(Login login){
+
+	public void setLogin(Login login) {
 		this.login = login;
 	}
 

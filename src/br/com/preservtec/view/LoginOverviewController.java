@@ -56,7 +56,7 @@ public class LoginOverviewController {
 			if (!login.equals(null)) {
 
 				Alert alert = new Alert(AlertType.CONFIRMATION);
-				alert.setTitle("Login");
+				alert.setTitle(Strings.TIULO_LOGIN);
 				alert.setHeaderText("Tudo OK!");
 				alert.setContentText("Login Efetuado com sucesso!!");
 				Optional<ButtonType> result = alert.showAndWait();

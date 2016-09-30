@@ -23,20 +23,20 @@ public class Procuracao {
 	private final StringProperty page;
 	private final StringProperty date;
 	private final StringProperty cartorio;
-	private final StringProperty book;	
+	private final StringProperty book;
 	private final ObjectProperty<Login> login;
-	//private final ObjectProperty<LocalDate> dateProcuracao;
+	private final ObjectProperty<LocalDate> dateProcuracao;
 
 	/**
 	 * Construtor Padrão
 	 */
 	public Procuracao() {
-		this(0, null, null, null, null, null, null, null,null);
+		this(0, null, null, null, null, null, null, null, null, null);
 
 	}
 
 	public Procuracao(int id, String page, String date, String cartorio, String book, String notes, String outorgante,
-			String outorgado, Login login) {
+			String outorgado, Login login, LocalDate dateProcuracao) {
 		this.id = new SimpleIntegerProperty(id);
 		this.outorgante = new SimpleStringProperty(outorgante);
 		this.outorgado = new SimpleStringProperty(outorgado);
@@ -45,6 +45,7 @@ public class Procuracao {
 		this.cartorio = new SimpleStringProperty(cartorio);
 		this.book = new SimpleStringProperty(book);
 		this.login = new SimpleObjectProperty<Login>(login);
+		this.dateProcuracao = new SimpleObjectProperty<LocalDate>(dateProcuracao);
 	}
 
 	public Integer getId() {
@@ -102,25 +103,29 @@ public class Procuracao {
 	public void setBook(String book) {
 		this.book.set(book);
 	}
-	
-	public Login getLogin(){
+
+	public Login getLogin() {
 		return login.get();
 	}
-	
-	public void setLogin(Login login){
+
+	public void setLogin(Login login) {
 		this.login.set(login);
 	}
+	
+	public LocalDate getDateProcuracao() {
+		return dateProcuracao.get();
+	}
+
+	public void setLocalDate(LocalDate dateProcuracao) {
+		this.dateProcuracao.set(dateProcuracao);
+	}
+	
 
 	@Override
 	public String toString() {
-		return "Procuração\n" 
-				+ "Página: " + getPage() + "\n"  
-				+ "Data: " + getDate() +  "\n"
-				+ "Cartório: " + getCartorio() + "\n" 
-				+ "Outorgante: " + getOutorgante() + "\n"
-				+ "Outorgado: " + getOutorgado() + "\n"
+		return "Procuração\n" + "Página: " + getPage() + "\n" + "Data: " + getDate() + "\n" + "Cartório: "
+				+ getCartorio() + "\n" + "Outorgante: " + getOutorgante() + "\n" + "Outorgado: " + getOutorgado() + "\n"
 				+ "Operador: " + getLogin().getNomeLogin();
-		
 
 	}
 

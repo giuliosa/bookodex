@@ -70,7 +70,7 @@ public class MainApp extends Application {
 			rootLayout.setCenter(personOverview);
 
 			ProcuracaoOverviewController controller = loader.getController();
-			controller.setMainApp(this);
+			//controller.setMainApp(this);
 			controller.setLogin(login);
 
 		} catch (IOException e) {
