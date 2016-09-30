@@ -14,8 +14,8 @@ public class LoginDAO {
 		this.connection = new ConnectionFactory().getConnection();
 	}
 	
-	public boolean verificaLogin(String user, String senha) {
-		boolean flag =true;
+	public Login verificaLogin(String user, String senha) {
+		//boolean flag =true;
 		Login loginProcurado = null;
 		
 		String sql = "select * from bookodex.login "
@@ -25,17 +25,19 @@ public class LoginDAO {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 
 			stmt.setString(1, user);
-			stmt.setString(2, senha);
+			stmt.setString(2, senha);			
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				loginProcurado = new Login();
-				loginProcurado.setUserLogin(rs.getString(1));
-				loginProcurado.setPasswordLogin(rs.getString(2));
+				loginProcurado.setUserLogin(rs.getString("userLogin"));
+				loginProcurado.setPasswordLogin(rs.getString("passwordLogin"));
+				loginProcurado.setNivelLogin(rs.getString("nivelLogin"));
+				loginProcurado.setNomeLogin(rs.getString("NomeLogin"));
 				
 			}
-			if (loginProcurado == null) {
+			/*if (loginProcurado == null) {
 				flag = false;
-			}
+			}*/
 			stmt.close();
 			rs.close();
 
@@ -43,7 +45,7 @@ public class LoginDAO {
 			// TODO: handle exception
 			System.out.println(e.getErrorCode());
 		}
-		return flag;
+		return loginProcurado;
 	}
 	
 }

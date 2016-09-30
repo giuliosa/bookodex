@@ -12,6 +12,7 @@ import javax.imageio.ImageIO;
 import com.itextpdf.text.DocumentException;
 
 import br.com.preservtec.MainApp;
+import br.com.preservtec.model.Login;
 import br.com.preservtec.model.Procuracao;
 import br.com.preservtec.util.PDFCreator;
 import javafx.beans.InvalidationListener;
@@ -66,6 +67,7 @@ public class ProcuracaoOverviewController {
 	private Image image;
 	private ArrayList<Procuracao> list;
 	private PDFCreator pdf;
+	private Login login;
 
 	public ProcuracaoOverviewController() {
 		InvalidationListener listener = new InvalidationListener() {
@@ -175,6 +177,7 @@ public class ProcuracaoOverviewController {
 			procuracao.setCartorio(cartorioTextField.getText().toString());
 			procuracao.setOutorgante(outorganteTextField.getText().toString());
 			procuracao.setOutorgado(outorgadoTextField.getText().toString());
+			procuracao.setLogin(this.login);
 
 			pdf = new PDFCreator();
 			pdf.criaDocumento(procuracao);
@@ -242,6 +245,10 @@ public class ProcuracaoOverviewController {
 
 			return false;
 		}
+	}
+	
+	public void setLogin(Login login){
+		this.login = login;
 	}
 
 }

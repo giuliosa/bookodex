@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -23,18 +24,19 @@ public class Procuracao {
 	private final StringProperty date;
 	private final StringProperty cartorio;
 	private final StringProperty book;	
+	private final ObjectProperty<Login> login;
 	//private final ObjectProperty<LocalDate> dateProcuracao;
 
 	/**
 	 * Construtor Padrão
 	 */
 	public Procuracao() {
-		this(0, null, null, null, null, null, null, null);
+		this(0, null, null, null, null, null, null, null,null);
 
 	}
 
 	public Procuracao(int id, String page, String date, String cartorio, String book, String notes, String outorgante,
-			String outorgado) {
+			String outorgado, Login login) {
 		this.id = new SimpleIntegerProperty(id);
 		this.outorgante = new SimpleStringProperty(outorgante);
 		this.outorgado = new SimpleStringProperty(outorgado);
@@ -42,6 +44,7 @@ public class Procuracao {
 		this.date = new SimpleStringProperty(date);
 		this.cartorio = new SimpleStringProperty(cartorio);
 		this.book = new SimpleStringProperty(book);
+		this.login = new SimpleObjectProperty<Login>(login);
 	}
 
 	public Integer getId() {
@@ -99,6 +102,14 @@ public class Procuracao {
 	public void setBook(String book) {
 		this.book.set(book);
 	}
+	
+	public Login getLogin(){
+		return login.get();
+	}
+	
+	public void setLogin(Login login){
+		this.login.set(login);
+	}
 
 	@Override
 	public String toString() {
@@ -106,8 +117,10 @@ public class Procuracao {
 				+ "Página: " + getPage() + "\n"  
 				+ "Data: " + getDate() +  "\n"
 				+ "Cartório: " + getCartorio() + "\n" 
-				+ " Outorgante: " + getOutorgante() + "\n"
-				+ " Outorgado: " + getOutorgado();
+				+ "Outorgante: " + getOutorgante() + "\n"
+				+ "Outorgado: " + getOutorgado() + "\n"
+				+ "Operador: " + getLogin().getNomeLogin();
+		
 
 	}
 
